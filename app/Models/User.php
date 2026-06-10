@@ -3,49 +3,112 @@
 namespace App\Models;
 
 use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject; // <-- Wajib dipanggil
+use Illuminate\Support\Facades\Storage;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable implements JWTSubject // <-- Tambahkan implements
+class User extends Authenticatable implements JWTSubject
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role',
+        'status',
+        'address',
+        'avatar',
+        'bio',
+        'is_verified',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password'          => 'hashed',
         ];
     }
 
-    // Fungsi wajib JWT untuk mengambil ID Pengguna
+    // ─── JWT Required ───────────────────────────────────────────────────────────
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
     }
 
-    // Fungsi wajib JWT jika ingin menambahkan klaim khusus
     public function getJWTCustomClaims()
     {
         return [];
     }
 
-    // Relasi UAS: Satu User dapat memiliki banyak catatan Mood
+    // ─── Accessors ───────────────────────────────────────────────────────────────
+
+    public function getAvatarUrlAttribute(): string
+    {
+        if ($this->avatar && Storage::disk('public')->exists($this->avatar)) {
+            return Storage::url($this->avatar);
+        }
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&background=396696&color=fff&size=128';
+    }
+
+    // ─── Scopes ──────────────────────────────────────────────────────────────────
+
+    public function scopeTherapists($query)
+    {
+        return $query->where('role', 'therapist')->where('status', 'active');
+    }
+
+    // ─── Relations ───────────────────────────────────────────────────────────────
+
     public function moods()
     {
         return $this->hasMany(Mood::class);
     }
 
-    // Relasi UAS: Satu User dapat memiliki banyak hasil Tes Stres
     public function assessments()
     {
         return $this->hasMany(Assessment::class);
     }
+
+    public function news()
+    {
+        return $this->hasMany(News::class, 'author_id');
+    }
+
+    public function chatRoomsAsUser()
+    {
+        return $this->hasMany(ChatRoom::class, 'user_id');
+    }
+
+    public function chatRoomsAsTherapist()
+    {
+        return $this->hasMany(ChatRoom::class, 'therapist_id');
+    }
+
+    public function sentMessages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    // Alias so code can call $user->messages()
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    // ─── Role Helpers ─────────────────────────────────────────────────────────────
+
+    public function isAdmin(): bool { return $this->role === 'admin'; }
+    public function isTherapist(): bool { return $this->role === 'therapist'; }
+    public function isUser(): bool { return $this->role === 'user'; }
 }

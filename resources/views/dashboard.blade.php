@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -93,29 +93,7 @@
 <body class="min-h-screen flex flex-col" style="background:#F4F7FB;color:#1E2229">
 
     <!-- Navigation -->
-    <nav id="main-nav" class="sticky top-0 z-40 backdrop-blur-md bg-white/95 border-b border-[#E4EDF7] transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-16">
-            <a href="/dashboard" class="flex items-center gap-2 text-lg font-outfit font-extrabold text-[#396696] tracking-tight mr-8 shrink-0">
-                💙 SoulKeep
-                <span class="text-[9px] bg-[#E4EDF7] text-[#396696] px-2 py-0.5 rounded-md font-bold">SDG 3</span>
-            </a>
-            <div class="hidden md:flex items-center gap-1 flex-1 justify-center">
-                <a href="/dashboard"  class="nav-item active px-3 py-2 text-sm font-semibold">🏠 Dashboard</a>
-                <a href="/assessment" class="nav-item px-3 py-2 text-sm font-semibold">📝 Tes Stres</a>
-                <a href="/relaxation" class="nav-item px-3 py-2 text-sm font-semibold">🌬️ Relaksasi</a>
-                <a href="/games"      class="nav-item px-3 py-2 text-sm font-semibold">🎮 Terapi Game</a>
-                <a href="/nearby"     class="nav-item px-3 py-2 text-sm font-semibold">📍 Psikolog</a>
-                <a href="/education"  class="nav-item px-3 py-2 text-sm font-semibold">📚 Library</a>
-            </div>
-            <div class="flex items-center gap-3 ml-auto">
-                <div class="hidden sm:flex items-center gap-2">
-                    <div class="w-7 h-7 rounded-full bg-[#E4EDF7] flex items-center justify-center font-bold text-xs text-[#396696]" id="user-avatar">U</div>
-                    <span class="text-sm font-semibold text-[#1E2229]" id="user-name">Pengguna</span>
-                </div>
-                <button onclick="logout()" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-[#E4EDF7] text-[#396696] hover:bg-[#396696] hover:text-white transition-all">Keluar</button>
-            </div>
-        </div>
-    </nav>
+@include('partials.user-sidebar', ['active' => 'dashboard'])
 
     <!-- Main Content -->
     <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8 pb-24 md:pb-10">
@@ -351,31 +329,23 @@
         </div>
     </footer>
 
-    <!-- Mobile Bottom Nav -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 border-t border-[#E4EDF7] bg-white/95 backdrop-blur-sm">
-        <div class="flex justify-around h-16 items-center px-1">
-            <a href="/dashboard"  class="mob-nav-item active"><span class="text-xl">🏠</span><span class="text-[8px] font-bold mt-0.5">Home</span></a>
-            <a href="/assessment" class="mob-nav-item"><span class="text-xl">📝</span><span class="text-[8px] font-bold mt-0.5">Tes</span></a>
-            <a href="/games"      class="mob-nav-item"><span class="text-xl">🎮</span><span class="text-[8px] font-bold mt-0.5">Game</span></a>
-            <a href="/nearby"     class="mob-nav-item"><span class="text-xl">📍</span><span class="text-[8px] font-bold mt-0.5">Psikolog</span></a>
-            <a href="/relaxation" class="mob-nav-item"><span class="text-xl">🌬️</span><span class="text-[8px] font-bold mt-0.5">Napas</span></a>
-        </div>
-    </nav>
-
     <script>
         const API_BASE = '/api';
         const API_KEY = 'rahasia-uas-123';
-        const token = localStorage.getItem('soulkeep_token');
+        // Auth is handled server-side via webauth middleware (session-based)
+        // JWT token from localStorage is only used for API calls on this page
+        const token = localStorage.getItem('soulkeep_token') || '';
 
-        if (!token) window.location.href = '/login';
-
-        const userName = localStorage.getItem('soulkeep_name') || 'Pengguna';
-        document.getElementById('user-name').textContent = userName;
-        document.getElementById('welcome-name').textContent = userName;
+        // Use session data from server
+        const userName = '{{ session("user.name", "Pengguna") }}';
+        const userEl = document.getElementById('user-name');
+        const welcomeEl = document.getElementById('welcome-name');
+        if (userEl) userEl.textContent = userName;
+        if (welcomeEl) welcomeEl.textContent = userName;
 
         // Phase 4 navbar init
         const _av = document.getElementById('user-avatar');
-        if (_av) _av.textContent = (localStorage.getItem('soulkeep_name') || 'P')[0].toUpperCase();
+        if (_av) _av.textContent = userName[0]?.toUpperCase() || 'U';
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('main-nav');
             if (nav) nav.classList.toggle('scrolled', window.scrollY > 10);
@@ -845,7 +815,7 @@
         function logout() {
             localStorage.removeItem('soulkeep_token');
             localStorage.removeItem('soulkeep_name');
-            window.location.href = '/login';
+            document.getElementById('logout-form').submit();
         }
 
         // Auto-load on page ready

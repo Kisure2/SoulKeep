@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -68,29 +68,7 @@
     <script>if (!localStorage.getItem('soulkeep_token')) window.location.href = '/login';</script>
 
     <!-- Navbar -->
-    <nav id="main-nav" class="sticky top-0 z-40 backdrop-blur-md bg-white/95 border-b border-[#E4EDF7] transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-16">
-            <a href="/dashboard" class="flex items-center gap-2 text-lg font-outfit font-extrabold text-[#396696] tracking-tight mr-8 shrink-0">
-                💙 SoulKeep
-                <span class="text-[9px] bg-[#E4EDF7] text-[#396696] px-2 py-0.5 rounded-md font-bold">SDG 3</span>
-            </a>
-            <div class="hidden md:flex items-center gap-1 flex-1 justify-center">
-                <a href="/dashboard"  class="nav-item px-3 py-2 rounded-lg text-sm font-semibold transition-all">🏠 Dashboard</a>
-                <a href="/assessment" class="nav-item px-3 py-2 rounded-lg text-sm font-semibold transition-all">📝 Tes Stres</a>
-                <a href="/relaxation" class="nav-item px-3 py-2 rounded-lg text-sm font-semibold transition-all">🌬️ Relaksasi</a>
-                <a href="/games"      class="nav-item px-3 py-2 rounded-lg text-sm font-semibold transition-all">🎮 Terapi Game</a>
-                <a href="/nearby"     class="nav-item active px-3 py-2 rounded-lg text-sm font-semibold transition-all">📍 Psikolog</a>
-                <a href="/education"  class="nav-item px-3 py-2 rounded-lg text-sm font-semibold transition-all">📚 Library</a>
-            </div>
-            <div class="flex items-center gap-3 ml-auto">
-                <div class="hidden sm:flex items-center gap-2">
-                    <div class="w-7 h-7 rounded-full bg-[#E4EDF7] flex items-center justify-center font-bold text-xs text-[#396696]" id="user-avatar">U</div>
-                    <span class="text-sm font-semibold text-[#1E2229]" id="user-name">Pengguna</span>
-                </div>
-                <button onclick="logout()" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-[#E4EDF7] text-[#396696] hover:bg-[#396696] hover:text-white transition-all">Keluar</button>
-            </div>
-        </div>
-    </nav>
+@include('partials.user-sidebar', ['active' => 'nearby'])
 
     <!-- Main -->
     <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 pb-20 md:pb-8">
@@ -272,17 +250,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Mobile Bottom Nav -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 border-t border-[#E4EDF7] bg-white/95 backdrop-blur-sm">
-        <div class="flex justify-around h-16 items-center px-1">
-            <a href="/dashboard"  class="mob-nav-item"><span class="text-xl">🏠</span><span class="text-[8px] font-bold mt-0.5">Home</span></a>
-            <a href="/assessment" class="mob-nav-item"><span class="text-xl">📝</span><span class="text-[8px] font-bold mt-0.5">Tes</span></a>
-            <a href="/games"      class="mob-nav-item"><span class="text-xl">🎮</span><span class="text-[8px] font-bold mt-0.5">Game</span></a>
-            <a href="/nearby"     class="mob-nav-item active"><span class="text-xl">📍</span><span class="text-[8px] font-bold mt-0.5">Psikolog</span></a>
-            <a href="/relaxation" class="mob-nav-item"><span class="text-xl">🌬️</span><span class="text-[8px] font-bold mt-0.5">Napas</span></a>
-        </div>
-    </nav>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
