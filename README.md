@@ -1,11 +1,11 @@
-﻿# ðŸ’™ mental_health_api â€” Platform Kesehatan Mental Mahasiswa
+# 💙 mental_health_api — Platform Kesehatan Mental Mahasiswa
 
-> Laravel 13 Â· PHP 8.4 Â· MySQL Â· Tailwind CDN Â· JWT Auth  
-> Mendukung **UN SDG 3** â€” Good Health and Well-Being
+> Laravel 13 · PHP 8.4 · MySQL · Tailwind CDN · JWT Auth  
+> Mendukung **UN SDG 3** — Good Health and Well-Being
 
 ---
 
-## ðŸ“‹ Daftar Isi
+## 📋 Daftar Isi
 
 1. [Persyaratan Sistem](#-persyaratan-sistem)
 2. [Instalasi dengan Laragon](#-instalasi-dengan-laragon-direkomendasikan)
@@ -22,7 +22,7 @@
 
 ---
 
-## âœ… Persyaratan Sistem
+## ✅ Persyaratan Sistem
 
 | Kebutuhan | Versi Minimum | Cek |
 |---|---|---|
@@ -31,31 +31,31 @@
 | MySQL | 5.7+ / MariaDB 10.4+ | - |
 | Node.js | 18+ (opsional) | `node -v` |
 
-> **Rekomendasi:** Gunakan **Laragon** â€” sudah include PHP, MySQL, Composer dalam 1 paket.  
+> **Rekomendasi:** Gunakan **Laragon** — sudah include PHP, MySQL, Composer dalam 1 paket.  
 > Download: https://laragon.org/download
 
 ---
 
-## ðŸŸ¢ Instalasi dengan Laragon (Direkomendasikan)
+## 🟢 Instalasi dengan Laragon (Direkomendasikan)
 
-### Langkah 1 â€” Tempatkan Folder Project
+### Langkah 1 — Tempatkan Folder Project
 
 1. Ekstrak / clone project ke:
    ```
    C:\laragon\www\mental-health-api\
    ```
-2. Buka **Laragon** â†’ klik kanan tray icon â†’ **Start All**
+2. Buka **Laragon** → klik kanan tray icon → **Start All**
 3. Pastikan **Apache** dan **MySQL** berstatus hijau
 
-### Langkah 2 â€” Buat Database
+### Langkah 2 — Buat Database
 
-1. Buka browser â†’ **http://localhost/phpmyadmin**
+1. Buka browser → **http://localhost/phpmyadmin**
 2. Klik **New** di panel kiri
 3. Isi nama database: `mental_health_api`
 4. Collation: `utf8mb4_unicode_ci`
 5. Klik **Create**
 
-### Langkah 3 â€” Konfigurasi .env
+### Langkah 3 — Konfigurasi .env
 
 ```bash
 # Di terminal (Laragon terminal atau CMD di folder project):
@@ -83,7 +83,7 @@ JWT_SECRET=          # akan diisi otomatis oleh perintah jwt:secret
 
 > Password MySQL Laragon default: **kosong**
 
-### Langkah 4 â€” Install Dependency & Setup
+### Langkah 4 — Install Dependency & Setup
 
 Buka **Laragon Terminal** (Alt+T) atau CMD di folder project:
 
@@ -101,7 +101,7 @@ php artisan migrate
 php artisan storage:link
 ```
 
-### Langkah 5 â€” Akses Aplikasi
+### Langkah 5 — Akses Aplikasi
 
 Laragon otomatis membuat virtual host:
 
@@ -118,47 +118,47 @@ php artisan serve
 
 ---
 
-## ðŸ”µ Instalasi dengan XAMPP
+## 🔵 Instalasi dengan XAMPP
 
-### Langkah 1 â€” Tempatkan Folder Project
+### Langkah 1 — Tempatkan Folder Project
 
 1. Ekstrak / clone project ke:
    ```
    C:\xampp\htdocs\mental-health-api\
    ```
 
-### Langkah 2 â€” Jalankan XAMPP
+### Langkah 2 — Jalankan XAMPP
 
 1. Buka **XAMPP Control Panel**
 2. Klik **Start** pada **Apache** dan **MySQL**
 3. Pastikan keduanya **Running** (hijau)
 
-### Langkah 3 â€” Buat Database
+### Langkah 3 — Buat Database
 
-1. Buka browser â†’ **http://localhost/phpmyadmin**
+1. Buka browser → **http://localhost/phpmyadmin**
 2. Klik **New** di panel kiri
 3. Nama database: `mental_health_api`
-4. Collation: `utf8mb4_unicode_ci` â†’ **Create**
+4. Collation: `utf8mb4_unicode_ci` → **Create**
 
-### Langkah 4 â€” Tambahkan PHP ke PATH (jika belum)
+### Langkah 4 — Tambahkan PHP ke PATH (jika belum)
 
 Jika perintah `php` tidak dikenali di CMD:
 
-1. **Start** â†’ cari **"Environment Variables"** â†’ buka
-2. **System Variables** â†’ pilih **Path** â†’ **Edit**
-3. **New** â†’ tambahkan: `C:\xampp\php`
-4. **OK** â†’ tutup CMD â†’ buka CMD baru
+1. **Start** → cari **"Environment Variables"** → buka
+2. **System Variables** → pilih **Path** → **Edit**
+3. **New** → tambahkan: `C:\xampp\php`
+4. **OK** → tutup CMD → buka CMD baru
 5. Verifikasi: `php -v`
 
 Lakukan hal sama untuk Composer jika belum terinstal:
 - Download dari: https://getcomposer.org/Composer-Setup.exe
 
-### Langkah 5 â€” Buka CMD di Folder Project
+### Langkah 5 — Buka CMD di Folder Project
 
-Buka File Explorer â†’ masuk ke `C:\xampp\htdocs\mental-health-api\`  
-Klik address bar â†’ ketik `cmd` â†’ **Enter**
+Buka File Explorer → masuk ke `C:\xampp\htdocs\mental-health-api\`  
+Klik address bar → ketik `cmd` → **Enter**
 
-### Langkah 6 â€” Konfigurasi .env
+### Langkah 6 — Konfigurasi .env
 
 ```cmd
 copy .env.example .env
@@ -183,7 +183,7 @@ APP_API_KEY=rahasia-uas-123
 
 > Password MySQL XAMPP default: **kosong**. Jika pernah diubah, isi sesuai passwordmu.
 
-### Langkah 7 â€” Install Dependency & Setup
+### Langkah 7 — Install Dependency & Setup
 
 ```bash
 composer install
@@ -203,7 +203,7 @@ Akses di: **http://localhost:8000**
 
 ---
 
-## âš™ï¸ Konfigurasi .env
+## ⚙️ Konfigurasi .env
 
 Berikut bagian penting yang **wajib** dikonfigurasi:
 
@@ -220,7 +220,7 @@ DB_DATABASE=mental_health_api
 DB_USERNAME=root
 DB_PASSWORD=                           # kosong jika default
 
-# API Key (jangan diubah â€” dipakai oleh frontend)
+# API Key (jangan diubah — dipakai oleh frontend)
 APP_API_KEY=rahasia-uas-123
 
 # Session (gunakan file agar tidak butuh tabel sessions)
@@ -235,7 +235,7 @@ JWT_SECRET=
 
 ---
 
-## ðŸ—„ï¸ Migrasi Database
+## 🗄️ Migrasi Database
 
 Jalankan satu perintah untuk membuat semua tabel:
 
@@ -268,7 +268,7 @@ php artisan migrate:fresh --seed
 
 ---
 
-## ðŸ‘¤ Buat Akun Admin
+## 👤 Buat Akun Admin
 
 Setelah migrasi, buat akun admin via **Tinker**:
 
@@ -300,7 +300,7 @@ Email: `admin@mental_health_api.id` | Password: `admin123`
 
 ---
 
-## ðŸŒ Akses Halaman
+## 🌐 Akses Halaman
 
 | Halaman | URL | Role |
 |---|---|---|
@@ -323,22 +323,22 @@ Email: `admin@mental_health_api.id` | Password: `admin123`
 
 ---
 
-## ðŸ” Peran & Hak Akses
+## 🔐 Peran & Hak Akses
 
 | Role | Cara Daftar | Tampilan |
 |---|---|---|
 | **user** | Daftar via `/register` pilih "User" | Sidebar kiri + semua fitur user |
-| **therapist** | Daftar via `/register` pilih "Terapis" â†’ tunggu approval admin | Panel chat + status pending/aktif |
+| **therapist** | Daftar via `/register` pilih "Terapis" → tunggu approval admin | Panel chat + status pending/aktif |
 | **admin** | Dibuat manual via Tinker | Panel admin + CRUD berita + kelola terapis |
 
 **Alur Therapist:**
-1. Daftar sebagai terapis â†’ status `pending`
-2. Admin login â†’ `/admin/therapists` â†’ klik **Approve**
+1. Daftar sebagai terapis → status `pending`
+2. Admin login → `/admin/therapists` → klik **Approve**
 3. Terapis bisa menerima chat dari user
 
 ---
 
-## ðŸ“¡ API Endpoint
+## 📡 API Endpoint
 
 Semua request API wajib menyertakan header:
 
@@ -351,7 +351,7 @@ X-API-KEY: rahasia-uas-123
 | Method | Endpoint | Body | Keterangan |
 |---|---|---|---|
 | POST | `/api/register` | name, email, password, role | Daftar akun |
-| POST | `/api/login` | email, password | Login â†’ dapat JWT token |
+| POST | `/api/login` | email, password | Login → dapat JWT token |
 
 ### User (butuh `Authorization: Bearer {token}`)
 
@@ -390,64 +390,64 @@ curl -X GET http://localhost:8000/api/news \
 
 ---
 
-## ðŸ“ Struktur Folder
+## 📁 Struktur Folder
 
 ```
 mental-health-api/
-â”œâ”€â”€ app/
-â”‚   â”œâ”€â”€ Http/
-â”‚   â”‚   â”œâ”€â”€ Controllers/
-â”‚   â”‚   â”‚   â”œâ”€â”€ AuthController.php        # Login, register (web + API)
-â”‚   â”‚   â”‚   â”œâ”€â”€ MoodController.php        # CRUD mood
-â”‚   â”‚   â”‚   â”œâ”€â”€ AssessmentController.php  # Tes stres
-â”‚   â”‚   â”‚   â”œâ”€â”€ ChatController.php        # Chat user â†” terapis
-â”‚   â”‚   â”‚   â”œâ”€â”€ NewsController.php        # Berita (CRUD admin)
-â”‚   â”‚   â”‚   â”œâ”€â”€ AdminController.php       # Panel admin
-â”‚   â”‚   â”‚   â””â”€â”€ ProfileController.php     # Profil user
-â”‚   â”‚   â””â”€â”€ Middleware/
-â”‚   â”‚       â”œâ”€â”€ ApiKeyMiddleware.php       # Validasi X-API-KEY
-â”‚   â”‚       â”œâ”€â”€ WebAuthMiddleware.php      # Cek session login
-â”‚   â”‚       â””â”€â”€ RoleMiddleware.php         # Cek role user
-â”‚   â””â”€â”€ Models/
-â”‚       â”œâ”€â”€ User.php
-â”‚       â”œâ”€â”€ Mood.php
-â”‚       â”œâ”€â”€ Assessment.php
-â”‚       â”œâ”€â”€ News.php
-â”‚       â”œâ”€â”€ ChatRoom.php
-â”‚       â””â”€â”€ Message.php
-â”œâ”€â”€ database/
-â”‚   â””â”€â”€ migrations/                       # 10 file migrasi
-â”œâ”€â”€ resources/views/
-â”‚   â”œâ”€â”€ layouts/app.blade.php             # Layout utama (navbar/sidebar)
-â”‚   â”œâ”€â”€ partials/user-sidebar.blade.php   # Sidebar role user
-â”‚   â”œâ”€â”€ auth/ (login, register)
-â”‚   â”œâ”€â”€ dashboard.blade.php
-â”‚   â”œâ”€â”€ assessment.blade.php
-â”‚   â”œâ”€â”€ relaxation.blade.php
-â”‚   â”œâ”€â”€ education.blade.php
-â”‚   â”œâ”€â”€ games*.blade.php
-â”‚   â”œâ”€â”€ nearby.blade.php
-â”‚   â”œâ”€â”€ news/
-â”‚   â”œâ”€â”€ chat/
-â”‚   â”œâ”€â”€ therapist/
-â”‚   â”œâ”€â”€ admin/
-â”‚   â””â”€â”€ profile/
-â”œâ”€â”€ routes/
-â”‚   â”œâ”€â”€ web.php                           # Route halaman web
-â”‚   â””â”€â”€ api.php                           # Route API (38 endpoint)
-â”œâ”€â”€ .env.example                          # Template konfigurasi
-â””â”€â”€ README.md
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── AuthController.php        # Login, register (web + API)
+│   │   │   ├── MoodController.php        # CRUD mood
+│   │   │   ├── AssessmentController.php  # Tes stres
+│   │   │   ├── ChatController.php        # Chat user ↔ terapis
+│   │   │   ├── NewsController.php        # Berita (CRUD admin)
+│   │   │   ├── AdminController.php       # Panel admin
+│   │   │   └── ProfileController.php     # Profil user
+│   │   └── Middleware/
+│   │       ├── ApiKeyMiddleware.php       # Validasi X-API-KEY
+│   │       ├── WebAuthMiddleware.php      # Cek session login
+│   │       └── RoleMiddleware.php         # Cek role user
+│   └── Models/
+│       ├── User.php
+│       ├── Mood.php
+│       ├── Assessment.php
+│       ├── News.php
+│       ├── ChatRoom.php
+│       └── Message.php
+├── database/
+│   └── migrations/                       # 10 file migrasi
+├── resources/views/
+│   ├── layouts/app.blade.php             # Layout utama (navbar/sidebar)
+│   ├── partials/user-sidebar.blade.php   # Sidebar role user
+│   ├── auth/ (login, register)
+│   ├── dashboard.blade.php
+│   ├── assessment.blade.php
+│   ├── relaxation.blade.php
+│   ├── education.blade.php
+│   ├── games*.blade.php
+│   ├── nearby.blade.php
+│   ├── news/
+│   ├── chat/
+│   ├── therapist/
+│   ├── admin/
+│   └── profile/
+├── routes/
+│   ├── web.php                           # Route halaman web
+│   └── api.php                           # Route API (38 endpoint)
+├── .env.example                          # Template konfigurasi
+└── README.md
 ```
 
 ---
 
-## ðŸ”§ Troubleshooting
+## 🔧 Troubleshooting
 
 | Masalah | Solusi |
 |---|---|
 | `php: command not found` | Tambahkan PHP ke PATH Windows (lihat Langkah 4 XAMPP) |
 | `composer: command not found` | Download dari https://getcomposer.org |
-| `Access denied for user 'root'` | Cek password MySQL di `.env` â€” coba kosongkan `DB_PASSWORD=` |
+| `Access denied for user 'root'` | Cek password MySQL di `.env` — coba kosongkan `DB_PASSWORD=` |
 | `Unknown database 'mental_health_api'` | Buat database `mental_health_api` di **phpMyAdmin** (`http://localhost/phpmyadmin`) terlebih dahulu |
 | `Class "JWTAuth" not found` | Jalankan `php artisan jwt:secret` |
 | Error 500 / APP_KEY missing | Jalankan `php artisan key:generate` |
@@ -461,7 +461,7 @@ mental-health-api/
 
 ---
 
-## âš¡ Quick Reference
+## ⚡ Quick Reference
 
 ```bash
 # ====== SETUP LENGKAP (copy-paste sekaligus) ======
@@ -491,7 +491,7 @@ Get-Content storage\logs\laravel.log -Tail 20  # Windows PowerShell
 
 ---
 
-## ðŸ“Š Stack Teknologi
+## 📊 Stack Teknologi
 
 | Layer | Teknologi |
 |---|---|
@@ -505,5 +505,4 @@ Get-Content storage\logs\laravel.log -Tail 20  # Windows PowerShell
 
 ---
 
-*mental_health_api Â© 2026 â€” Dibuat sebagai proyek UAS dengan tema UN SDG 3 (Good Health and Well-Being)*
-
+*mental_health_api © 2026 — Dibuat sebagai proyek UAS dengan tema UN SDG 3 (Good Health and Well-Being)*
